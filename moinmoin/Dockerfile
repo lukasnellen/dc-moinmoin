@@ -15,9 +15,6 @@ RUN apk add --no-cache \
 
 COPY moin-${version}.tar.gz /
 
-#RUN pip install --prefix=/opt moin-${version}.tar.gz && \
-#    rm  moin-${version}.tar.gz && \
-#    mkdir /config
 RUN pip install --prefix=/opt moin-${version}.tar.gz 
 
 ###########################################################
