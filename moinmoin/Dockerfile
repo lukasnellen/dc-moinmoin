@@ -1,24 +1,40 @@
 ARG baseimage=alpine:3.8
-FROM $baseimage
+FROM $baseimage AS base
+
+###########################################################
+FROM base AS build
 
 ARG version=1.9.10
-ENV MOINMOINVERSION=${version}
+
+LABEL maintainers="Lukas Nellen <lukas@nucleares.unam.mx>" \
+      name="MoinMoin stand-alone servers - alpine builder" 
+
+RUN apk add --no-cache \
+  python2 \
+  py2-pip 
+
+COPY moin-${version}.tar.gz /
+
+#RUN pip install --prefix=/opt moin-${version}.tar.gz && \
+#    rm  moin-${version}.tar.gz && \
+#    mkdir /config
+RUN pip install --prefix=/opt moin-${version}.tar.gz 
+
+###########################################################
+FROM base
 
 LABEL maintainers="Lukas Nellen <lukas@nucleares.unam.mx>" \
       name="MoinMoin stand-alone servers - alpine" 
 
 RUN apk add --no-cache \
   python2 \
-  py2-pip \
+  py-setuptools \
   py2-docutils \
   xapian-bindings-python \
   py2-gunicorn
 
-COPY moin-${MOINMOINVERSION}.tar.gz /
-
-RUN pip install --prefix=/opt moin-${MOINMOINVERSION}.tar.gz && \
-    rm  moin-${MOINMOINVERSION}.tar.gz && \
-    mkdir /config
+COPY --from=build /opt /opt
+RUN mkdir /config
 
 ENV PYTHONPATH=/opt/lib/python2.7/site-packages:/config/moin \
  PATH=/opt/bin:${PATH}
