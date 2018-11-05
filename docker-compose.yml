@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  moin:
+    image: lukasnellen/moinmoin:1.9.10
+#    image: lukasnellen/moinmoin:1.9.10-debug
+#    image: lukasnellen/moinmoin:1.9.10-slim
+    restart: always
+    volumes:
+      - type: bind
+        source: ./moin-config
+        target: /config/moin
+      - type: volume
+        source: data
+        target: /opt/share/moin/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:www.example.com"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.frontend.headers.SSLRedirect=true"
+  
+volumes:
+  data:
+      
+  
