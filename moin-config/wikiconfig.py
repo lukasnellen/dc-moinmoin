@@ -178,7 +178,7 @@ class Config(multiconfig.DefaultConfig):
     page_template_regex = ur'(?P<all>(?P<key>\S+)Template)'
 
     # Content options ---------------------------------------------------
-xs
+
     # Show users hostnames in RecentChanges
     show_hosts = 1
 
