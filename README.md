@@ -15,7 +15,9 @@ Images
 ------
 
 The images are generated for the current stable version 1.9.10 of
-[MoinMoin](http://moinmo.in).
+[MoinMoin](http://moinmo.in). The images are available from the docker
+hub. THey can be pulled manually or automatically, as part of starting
+the container with `docker-compose up`.
 
 * `lukasnellen/moinmoin:1.9.10` is based on alpine linux to provide a
   minimal container.
@@ -49,7 +51,9 @@ creation of accounts enabled - see `actions_superuser`.
 For more information or on how to use a farm setup to host multiple
 wikis in one container, check the installation instructions in
 http://moinmo.in/MoinMoinDownload. You presumably also want to modify
-the volumes used to run the container to have one contianer per wiki, The suggesion is to mount the containers for the individual wikis under `/srv`.
+the volumes used to run the container to have one contianer per wiki,
+The suggesion is to mount the containers for the individual wikis
+under `/srv`.
 
 
 Running commands in the container
