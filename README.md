@@ -20,13 +20,14 @@ The images are generated for the current stable version 1.9.10 of
 * `lukasnellen/moinmoin:1.9.10` is based on alpine linux to provide a
   minimal container.
 
-* `lukasnellen/moinmoin:1.9.10` is based on debian:9-slim to provide a
-  small container, but with a regular glibc-based distribution.
+* `lukasnellen/moinmoin:1.9.10-slim` is based on debian:9-slim to
+  provide a small container, but with a regular glibc-based
+  distribution.
 
-* `lukasnellen/moinmoin:1.9.10` is based on debian:9, with extra tools
-  included, to provide an image to work inside the container. This can
-  be used to debug installation problems or to migrate data from an
-  older version of the wiki.
+* `lukasnellen/moinmoin:1.9.10-debug` is based on debian:9, with extra
+  tools included, to provide an image to work inside the
+  container. This can be used to debug installation problems or to
+  migrate data from an older version of the wiki.
 
 
 Initial Setup of single wiki
