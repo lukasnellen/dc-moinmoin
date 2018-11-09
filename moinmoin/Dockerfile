@@ -11,6 +11,7 @@ LABEL maintainers="Lukas Nellen <lukas@nucleares.unam.mx>" \
 
 RUN apk add --no-cache \
   python2 \
+  py-setuptools \
   py2-pip 
 
 COPY moin-${version}.tar.gz /
