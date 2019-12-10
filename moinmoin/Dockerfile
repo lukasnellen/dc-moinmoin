@@ -1,4 +1,4 @@
-ARG baseimage=alpine:3.8
+ARG baseimage=alpine:3.9
 FROM $baseimage AS base
 
 ###########################################################
